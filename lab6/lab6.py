@@ -15,6 +15,7 @@ from PIL import Image
 #   baller = B
 #   tosia = T
 #   tekstura.tga = D
+#   rock = R
 #------------------------------------------------------
 viewer = [0.0, 0.0, 10.0]
 
@@ -92,7 +93,7 @@ def getTexture(string):
     default = Image.open("tekstura.tga")
     baller = Image.open("baller.tga")
     tosia = Image.open("tosia.tga")
-
+    rock = Image.open("rock.tga")
     if (string == "M"):
         image = megamind
     if (string == "D"):
@@ -101,6 +102,8 @@ def getTexture(string):
         image = baller
     if (string == "T"):
         image = tosia
+    if (string == "R"):
+        image = rock
 
     glTexImage2D(
         GL_TEXTURE_2D, 0, 3, image.size[0], image.size[1], 0,
@@ -214,6 +217,8 @@ def keyboard_key_callback(window, key, scancode, action, mods):
         getTexture("B")
     if key == GLFW_KEY_T and action == GLFW_PRESS:
         getTexture("T")
+    if key == GLFW_KEY_R and action == GLFW_PRESS:
+        getTexture("R")
     
     if key == GLFW_KEY_KP_SUBTRACT and action == GLFW_PRESS:
         hide_wall = 1
